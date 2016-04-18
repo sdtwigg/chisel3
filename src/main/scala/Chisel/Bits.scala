@@ -569,3 +569,10 @@ object Mux {
   }
 }
 
+sealed class LiteralMaker(x: BigInt) {
+  def U: UInt = {
+    require(x >= 0, "Can't make negative UInts")
+    UInt(x, Width())
+  }
+  def S: SInt = SInt(x, Width())
+}
